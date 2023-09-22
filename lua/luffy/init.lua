@@ -28,15 +28,26 @@ function M.ternary(cond, T, F)
   end
 end
 
-function M.setup()
-  local options = M.safe_require("options")
-  for k, v in pairs(options) do
+function M.set_colorscheme(opts)
+  if opts.colorscheme.name then
+    vim.cmd.colorscheme(opts.colorscheme.name)
+  end
+
+  if opts.colorscheme.hook then
+    opts.colorscheme.hook()
+  end
+end
+
+function M.setup(opts)
+  for k, v in pairs(M.safe_require("options")) do
     vim.opt[k] = v
   end
 
   M.safe_require("keymaps")
   M.safe_require("auto")
   M.safe_require("plugins")
+
+  M.set_colorscheme(opts)
 end
 
 return M
