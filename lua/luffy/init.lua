@@ -33,6 +33,8 @@ function M.setup()
   for k, v in pairs(options) do
     vim.opt[k] = v
   end
+
+  M.safe_require("keymaps")
 end
 
 return M
