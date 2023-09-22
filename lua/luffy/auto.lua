@@ -3,6 +3,23 @@ local autocmd = vim.api.nvim_create_autocmd
 
 local luffygrp = augroup("luffy", { clear = true })
 
+autocmd({ "FileType" }, {
+  group = luffygrp,
+  pattern = { "text", "tex", "markdown", "plaintex" },
+  callback = function()
+    vim.opt_local.textwidth = 80
+  end,
+})
+
+autocmd({ "FileType" }, {
+  group = luffygrp,
+  pattern = { "json", "yaml" },
+  callback = function()
+    vim.opt_local.tabstop = 2
+    vim.opt_local.shiftwidth = 2
+  end,
+})
+
 autocmd({ "TextYankPost" }, {
   group = luffygrp,
   callback = function()
