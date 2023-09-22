@@ -20,6 +20,14 @@ function M.safe_require(module)
   return ret
 end
 
+function M.ternary(cond, T, F)
+  if cond then
+    return T
+  else
+    return F
+  end
+end
+
 function M.setup()
   local options = M.safe_require("options")
   for k, v in pairs(options) do
