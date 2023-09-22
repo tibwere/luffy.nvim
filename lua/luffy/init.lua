@@ -35,6 +35,7 @@ function M.setup()
   end
 
   M.safe_require("keymaps")
+  M.safe_require("auto")
 end
 
 return M
