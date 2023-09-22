@@ -21,6 +21,10 @@ function M.safe_require(module)
 end
 
 function M.setup()
+  local options = M.safe_require("options")
+  for k, v in pairs(options) do
+    vim.opt[k] = v
+  end
 end
 
 return M
