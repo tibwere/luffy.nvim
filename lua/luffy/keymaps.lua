@@ -44,7 +44,7 @@ map("n", "<leader>tc", function()
   toggle_option("ignorecase", true, false, "Ignore case")
 end, { desc = "Toggle case sensitive/insensitive search" })
 
-map("n", "<leader>ln", function()
+map("n", "<leader>tn", function()
   toggle_option("relativenumber", true, false, "Relative line numbers")
 end, { desc = "Toggle relative/absolute line numbers" })
 
