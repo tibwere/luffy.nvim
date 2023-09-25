@@ -13,6 +13,18 @@ local diff = {
   cond = conditional_hide,
 }
 
+-- helper function used to format a component
+-- that immediately shows the tab width and type
+local tab_info = function()
+  local tab_type
+  if vim.api.nvim_buf_get_option(0, "expandtab") then
+    tab_type = "Spaces"
+  else
+    tab_type = "Tab"
+  end
+  return tab_type .. ": " .. vim.api.nvim_buf_get_option(0, "shiftwidth")
+end
+
 return {
   "nvim-lualine/lualine.nvim",
   dependencies = { "nvim-tree/nvim-web-devicons", lazy = true },
