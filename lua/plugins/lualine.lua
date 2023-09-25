@@ -69,6 +69,13 @@ return {
       section_separators = { left = "", right = "" },
       always_divide_middle = true,
     },
-
-  }
+    sections = {
+      lualine_a = { "mode" },
+      lualine_b = { "branch", diagnostics },
+      lualine_c = { "filename" },
+      lualine_x = { "filetype", tab_info },
+      lualine_y = { diff, progress },
+      lualine_z = { "location" },
+    },
+  },
 }
