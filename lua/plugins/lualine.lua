@@ -25,6 +25,30 @@ local tab_info = function()
   return tab_type .. ": " .. vim.api.nvim_buf_get_option(0, "shiftwidth")
 end
 
+-- custom progress component
+-- (it displays an incremental box along with the percentage)
+local progress = {
+  "progress",
+  fmt = function(str)
+    local current_line = vim.fn.line(".")
+    local total_lines = vim.fn.line("$")
+    local chars = {
+      "__",
+      "▁▁",
+      "▂▂",
+      "▃▃",
+      "▄▄",
+      "▅▅",
+      "▆▆",
+      "▇▇",
+      "██",
+    }
+    local line_ratio = current_line / total_lines
+    local index = math.ceil(line_ratio * #chars)
+    return str .. " " .. chars[index]
+  end,
+}
+
 return {
   "nvim-lualine/lualine.nvim",
   dependencies = { "nvim-tree/nvim-web-devicons", lazy = true },
