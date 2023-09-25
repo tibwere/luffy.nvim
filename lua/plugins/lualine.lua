@@ -13,6 +13,15 @@ local diff = {
   cond = conditional_hide,
 }
 
+-- custom diagnostic component
+-- (always visible and updated)
+local diagnostics = {
+  "diagnostics",
+  update_in_insert = true,
+  always_visible = true,
+  cond = conditional_hide,
+}
+
 -- helper function used to format a component
 -- that immediately shows the tab width and type
 local tab_info = function()
