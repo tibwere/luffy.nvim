@@ -1,6 +1,7 @@
 return {
   "dhananjaylatkar/cscope_maps.nvim",
   dependencies = {
+    "folke/which-key.nvim", -- for whichkey hints
     "nvim-telescope/telescope.nvim", -- for picker="telescope"
     "nvim-tree/nvim-web-devicons", -- for devicons in telescope or fzf
   },
