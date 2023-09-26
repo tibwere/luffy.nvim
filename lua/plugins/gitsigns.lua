@@ -59,6 +59,13 @@ return {
         gs.diffthis("~")
       end, { desc = "Open diff with HEAD~" })
       map("n", "<leader>td", gs.toggle_deleted, { desc = "Toggle deleted" })
+
+      local ok, wk = pcall(require, "which-key")
+      if ok then
+        wk.register({
+          ["<leader>h"] = { name = "+git" },
+        }, { buffer = bufnr })
+      end
     end,
   },
 }
