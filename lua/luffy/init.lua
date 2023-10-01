@@ -1,7 +1,5 @@
 local M = {}
 
-M.plugin_name = "luffy"
-
 function M.emit_notify(title, body, level, timeout)
   level = level or vim.log.levels.INFO
   timeout = timeout or 1000
@@ -9,11 +7,14 @@ function M.emit_notify(title, body, level, timeout)
 end
 
 function M.safe_require(module)
-  local ok, ret = pcall(require, M.plugin_name .. "." .. module)
+  local ok, ret = pcall(require, module)
   if not ok then
     M.emit_notify(
       "Module load",
-      "An error was encountered while trying to load '" .. module .. "'"
+      "An error was encountered while trying to load '"
+        .. module
+        .. "'\nError:\n"
+        .. ret
     )
   end
 
@@ -39,13 +40,13 @@ function M.set_colorscheme(opts)
 end
 
 function M.setup(opts)
-  for k, v in pairs(M.safe_require("options")) do
+  for k, v in pairs(M.safe_require("luffy.options")) do
     vim.opt[k] = v
   end
 
-  M.safe_require("keymaps")
-  M.safe_require("auto")
-  M.safe_require("plugins")
+  M.safe_require("luffy.keymaps")
+  M.safe_require("luffy.auto")
+  M.safe_require("luffy.plugins")
 
   M.set_colorscheme(opts)
 end
