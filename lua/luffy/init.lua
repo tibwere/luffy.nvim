@@ -48,6 +48,8 @@ function M.setup(opts)
   M.safe_require("luffy.auto")
   M.safe_require("luffy.plugins")
 
+  M.safe_require("luffy.devel")
+
   M.set_colorscheme(opts)
 end
 
