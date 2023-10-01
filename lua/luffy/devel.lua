@@ -1,8 +1,37 @@
 local icons = {
-  error = "✘",
-  warn = "▲",
-  hint = "⚑",
-  info = "»",
+  diagnostic = {
+    error = "✘",
+    warn = "▲",
+    hint = "⚑",
+    info = "»",
+  },
+  kind = {
+    Text = "",
+    Method = "󰆧",
+    Function = "󰊕",
+    Constructor = "",
+    Field = "󰇽",
+    Variable = "󰂡",
+    Class = "󰠱",
+    Interface = "",
+    Module = "",
+    Property = "󰜢",
+    Unit = "",
+    Value = "󰎠",
+    Enum = "",
+    Keyword = "󰌋",
+    Snippet = "",
+    Color = "󰏘",
+    File = "󰈙",
+    Reference = "",
+    Folder = "󰉋",
+    EnumMember = "",
+    Constant = "󰏿",
+    Struct = "",
+    Event = "",
+    Operator = "󰆕",
+    TypeParameter = "󰅲",
+  },
 }
 
 local lsp_zero = require("lsp-zero")
@@ -40,7 +69,7 @@ lsp_zero.on_attach(function(_, bufnr)
   map("n", "[d", vim.diagnostic.goto_prev, { desc = "Goto next diagnostic" })
 end)
 
-lsp_zero.set_sign_icons(icons)
+lsp_zero.set_sign_icons(icons.diagnostic)
 
 local servers = {
   "lua_ls",
@@ -88,6 +117,22 @@ cmp.setup({
 
     -- Ctrl+Space to trigger completion menu
     ["<C-Space>"] = cmp.mapping.complete(),
+  },
+  formatting = {
+    format = function(entry, vim_item)
+      -- Kind icons
+      vim_item.kind =
+        string.format("%s %s", icons.kind[vim_item.kind], vim_item.kind)
+      -- Source
+      vim_item.menu = ({
+        nvim_lsp = "[LSP]",
+        nvim_lua = "[NVIM_LUA]",
+        luasnip = "[Snippet]",
+        buffer = "[Buffer]",
+        path = "[Path]",
+      })[entry.source.name]
+      return vim_item
+    end,
   },
 })
 
