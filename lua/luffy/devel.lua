@@ -1,3 +1,10 @@
+local icons = {
+  error = "✘",
+  warn = "▲",
+  hint = "⚑",
+  info = "»",
+}
+
 local lsp_zero = require("lsp-zero")
 
 lsp_zero.on_attach(function(_, bufnr)
@@ -32,6 +39,8 @@ lsp_zero.on_attach(function(_, bufnr)
   map("n", "]d", vim.diagnostic.goto_next, { desc = "Goto next diagnostic" })
   map("n", "[d", vim.diagnostic.goto_prev, { desc = "Goto next diagnostic" })
 end)
+
+lsp_zero.set_sign_icons(icons)
 
 require("mason-lspconfig").setup({
   ensure_installed = {},
