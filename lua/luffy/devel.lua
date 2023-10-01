@@ -109,7 +109,15 @@ cmp.setup({
     { name = "nvim_lsp" },
     { name = "nvim_lua" },
     { name = "luasnip" },
-    { name = "buffer" },
+    {
+      name = "buffer",
+      -- complete from all opened buffers
+      option = {
+        get_bufnrs = function()
+          return vim.api.nvim_list_bufs()
+        end,
+      },
+    },
     { name = "path" },
   }),
   mapping = {
