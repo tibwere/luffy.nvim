@@ -55,9 +55,19 @@ require("mason-lspconfig").setup({
     lsp_zero.default_setup,
     lua_ls = function()
       local lua_opts = lsp_zero.nvim_lua_ls({
+        format = { enable = false },
         telemetry = { enable = false },
       })
       require("lspconfig").lua_ls.setup(lua_opts)
     end,
+  },
+})
+
+local null_ls = require("null-ls")
+
+null_ls.setup({
+  sources = {
+    null_ls.builtins.formatting.stylua,
+    null_ls.builtins.completion.spell,
   },
 })
