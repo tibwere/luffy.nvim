@@ -42,8 +42,15 @@ end)
 
 lsp_zero.set_sign_icons(icons)
 
+local servers = {
+  "lua_ls",
+  "bashls",
+  "clangd",
+  "pyright",
+}
+
 require("mason-lspconfig").setup({
-  ensure_installed = {},
+  ensure_installed = servers,
   handlers = {
     lsp_zero.default_setup,
   },
