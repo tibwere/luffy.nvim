@@ -67,6 +67,22 @@ lsp_zero.on_attach(function(_, bufnr)
   map("n", "<F4>", vim.lsp.buf.code_action, { desc = "Select an action" })
   map("n", "]d", vim.diagnostic.goto_next, { desc = "Goto next diagnostic" })
   map("n", "[d", vim.diagnostic.goto_prev, { desc = "Goto next diagnostic" })
+
+  vim.api.nvim_create_autocmd("CursorHold", {
+    buffer = bufnr,
+    desc = "LSP show diagnostic on CursorHold",
+    callback = function()
+      local hover_opts = {
+        focusable = false,
+        close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
+        border = "rounded",
+        source = "always",
+        prefix = " ",
+      }
+
+      vim.diagnostic.open_float(nil, hover_opts)
+    end,
+  })
 end)
 
 lsp_zero.set_sign_icons(icons.diagnostic)
