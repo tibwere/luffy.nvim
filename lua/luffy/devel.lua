@@ -136,6 +136,9 @@ cmp.setup({
       end
     end, { "i", "s", "c" }),
 
+    ["<C-u>"] = cmp.mapping(cmp.mapping.scroll_docs(-1), { "i", "c" }),
+    ["<C-d>"] = cmp.mapping(cmp.mapping.scroll_docs(1), { "i", "c" }),
+
     -- `Enter` key to confirm completion
     ["<CR>"] = cmp.mapping.confirm({ select = false }),
 
