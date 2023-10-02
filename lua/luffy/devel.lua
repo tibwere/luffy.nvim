@@ -92,6 +92,7 @@ local servers = {
   "bashls",
   "clangd",
   "pyright",
+  "gopls",
 }
 
 require("mason-lspconfig").setup({
