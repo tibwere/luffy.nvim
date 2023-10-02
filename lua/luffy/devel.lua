@@ -109,6 +109,14 @@ require("mason-lspconfig").setup({
   },
 })
 
+vim.diagnostic.config({
+  virtual_text = false,
+  signs = true,
+  underline = true,
+  update_in_insert = false,
+  severity_sort = true,
+})
+
 local cmp = require("cmp")
 local cmp_action = require("lsp-zero").cmp_action()
 
