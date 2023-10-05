@@ -1,56 +1,27 @@
 local M = {}
 
-function M.emit_notify(title, body, level, timeout)
-  level = level or vim.log.levels.INFO
-  timeout = timeout or 1000
-  vim.notify(body, level, { title = title, timeout = 1000 })
-end
-
-function M.safe_require(module)
-  local ok, ret = pcall(require, module)
-  if not ok then
-    M.emit_notify(
-      "Module load",
-      "An error was encountered while trying to load '"
-        .. module
-        .. "'\nError:\n"
-        .. ret
-    )
-  end
-
-  return ret
-end
-
-function M.ternary(cond, T, F)
-  if cond then
-    return T
+local function set_colorscheme(colorscheme)
+  if type(colorscheme) == "function" then
+    colorscheme()
+  elseif type(colorscheme) == "string" then
+    vim.cmd.colorscheme(colorscheme)
   else
-    return F
-  end
-end
-
-function M.set_colorscheme(opts)
-  if opts.colorscheme.name then
-    vim.cmd.colorscheme(opts.colorscheme.name)
-  end
-
-  if opts.colorscheme.hook then
-    opts.colorscheme.hook()
+    error({ msg = "opts.colorscheme should be a string or a function" })
   end
 end
 
 function M.setup(opts)
-  for k, v in pairs(M.safe_require("luffy.options")) do
-    vim.opt[k] = v
+  for _, m in pairs(opts.modules) do
+    local ok, ret = pcall(require, "luffy." .. m)
+    if not ok then
+      error({ failed_module = m, log = ret })
+    end
   end
 
-  M.safe_require("luffy.keymaps")
-  M.safe_require("luffy.auto")
-  M.safe_require("luffy.plugins")
-
-  M.safe_require("luffy.devel")
-
-  M.set_colorscheme(opts)
+  local _, err = pcall(set_colorscheme, opts.colorscheme)
+  if err then
+    error({ failed_module = "init", log = err.msg })
+  end
 end
 
 return M

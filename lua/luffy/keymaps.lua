@@ -1,7 +1,7 @@
 local function toggle_option(option, old, new, name)
-  local t = require("luffy")
-  vim.opt[option] = t.ternary(vim.opt[option]:get() == old, new, old)
-  t.emit_notify(
+  local utils = require("luffy.utils")
+  vim.opt[option] = utils.ternary(vim.opt[option]:get() == old, new, old)
+  utils.emit_notify(
     "Toggle option",
     '"' .. name .. '" ' .. "has been set to " .. tostring(vim.opt[option]:get())
   )
@@ -54,11 +54,11 @@ end, { desc = "Toggle relative/absolute line numbers" })
 -- run makeprg
 map("n", "<F5>", function()
   vim.cmd([[silent make]])
-  require("luffy.config").emit_notify("Make", "'makeprg' has completed")
+  require("luffy.utils").emit_notify("Make", "'makeprg' has completed")
 end, { desc = "Run make" })
 
 -- update session
 map("n", "<leader>us", function()
   vim.cmd([[mks!]])
-  require("luffy.config").emit_notify("Session manager", "Session.nvim updated")
+  require("luffy.utils").emit_notify("Session manager", "Session.nvim updated")
 end, { desc = "Update Session.vim" })
