@@ -1,10 +1,11 @@
 return {
   "akinsho/bufferline.nvim",
   version = "*",
-  dependencies = "nvim-tree/nvim-web-devicons",
+  dependencies = { "nvim-tree/nvim-web-devicons", "famiu/bufdelete.nvim" },
   event = "VeryLazy",
   opts = {
     options = {
+      close_command = "Bdelete! %d",
       right_mouse_command = nil,
       middle_mouse_command = nil,
       diagnostics = "nvim_lsp",
