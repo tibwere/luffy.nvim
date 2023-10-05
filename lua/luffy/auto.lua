@@ -1,10 +1,11 @@
-local augroup = vim.api.nvim_create_augroup
+-- all my autocommands should be included in this group
+-- so they can be easily identified
+vim.api.nvim_create_augroup("gomu-gomu-no", { clear = true })
+
 local autocmd = vim.api.nvim_create_autocmd
 
-local luffygrp = augroup("luffy", { clear = true })
-
 autocmd({ "FileType" }, {
-  group = luffygrp,
+  group = "gomu-gomu-no",
   pattern = { "text", "tex", "markdown", "plaintex" },
   callback = function()
     vim.opt_local.textwidth = 80
@@ -17,7 +18,7 @@ autocmd({ "FileType" }, {
 })
 
 autocmd({ "FileType" }, {
-  group = luffygrp,
+  group = "gomu-gomu-no",
   pattern = { "json", "yaml" },
   callback = function()
     vim.opt_local.tabstop = 2
@@ -26,7 +27,7 @@ autocmd({ "FileType" }, {
 })
 
 autocmd({ "TextYankPost" }, {
-  group = luffygrp,
+  group = "gomu-gomu-no",
   callback = function()
     vim.highlight.on_yank({
       higroup = "IncSearch",
@@ -36,7 +37,7 @@ autocmd({ "TextYankPost" }, {
 })
 
 autocmd("BufReadPost", {
-  group = luffygrp,
+  group = "gomu-gomu-no",
   callback = function()
     local exclude = { "gitcommit" }
     local buf = vim.api.nvim_get_current_buf()
