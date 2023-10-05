@@ -12,6 +12,7 @@ return {
       ["<leader>r"] = { name = "+remove" },
       ["<leader>t"] = { name = "+toggle" },
       ["<leader>u"] = { name = "+update" },
+      ["<leader>b"] = { name = "+buffer" },
     })
   end,
 }
