@@ -12,6 +12,9 @@ local map = vim.keymap.set
 -- set <Space> as leader
 vim.g.mapleader = " "
 
+map("i", "jk", "<ESC>", { desc = "Goto normal mode (quickly)" })
+map("i", "kj", "<ESC>", { desc = "Goto normal mode (quickly)" })
+
 map("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move down (indent aware)" })
 map("v", "K", ":m '<-2<CR>gv=gv", { desc = "Move up (indent aware)" })
 
