@@ -1,20 +1,4 @@
-local M = {}
-
-M.default_opts = {
-  colorscheme = function()
-    vim.cmd.colorscheme("catppuccin")
-    local mocha = require("catppuccin.palettes").get_palette("mocha")
-    vim.cmd("highlight ColorColumn guibg=" .. mocha.red)
-    vim.cmd("highlight LineNr guifg=" .. mocha.yellow)
-  end,
-  modules = {
-    "options",
-    "keymaps",
-    "auto",
-    "plugins",
-    "devel",
-  },
-}
+local custom_options = {}
 
 if not pcall(require, "luffy.utils") then
   vim.api.nvim_echo({
@@ -32,7 +16,7 @@ if not pcall(require, "luffy.utils") then
 end
 
 local _, err = pcall(function()
-  require("luffy").setup(M.default_opts)
+  require("luffy").setup(custom_options)
 end)
 
 if err then
@@ -45,5 +29,3 @@ if err then
   vim.fn.getchar()
   vim.cmd([[quit!]])
 end
-
-return M
