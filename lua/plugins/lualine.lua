@@ -58,6 +58,16 @@ local progress = {
   end,
 }
 
+local navic = {
+  "navic",
+  fmt = function()
+    return require("nvim-navic").get_location()
+  end,
+  cond = function()
+    return conditional_hide() and require("nvim-navic").is_available()
+  end,
+}
+
 return {
   "nvim-lualine/lualine.nvim",
   dependencies = { "nvim-tree/nvim-web-devicons", lazy = true },
@@ -72,7 +82,7 @@ return {
     sections = {
       lualine_a = { "mode" },
       lualine_b = { "branch", diagnostics },
-      lualine_c = { "filename" },
+      lualine_c = { "filename", navic },
       lualine_x = { "filetype", tab_info },
       lualine_y = { diff, progress },
       lualine_z = { "location" },

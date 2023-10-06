@@ -1,6 +1,10 @@
 local lsp_zero = require("lsp-zero")
 
-lsp_zero.on_attach(function(_, bufnr)
+lsp_zero.on_attach(function(client, bufnr)
+  if client.server_capabilities.documentSymbolProvider then
+    require("nvim-navic").attach(client, bufnr)
+  end
+
   local function map(mode, lhs, rhs, opts)
     local bufopt = { buffer = bufnr }
     local options = vim.tbl_deep_extend("force", bufopt, opts or {})
