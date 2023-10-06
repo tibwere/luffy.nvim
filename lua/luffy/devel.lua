@@ -1,39 +1,3 @@
-local icons = {
-  diagnostic = {
-    error = "✘",
-    warn = "▲",
-    hint = "⚑",
-    info = "»",
-  },
-  kind = {
-    Text = "",
-    Method = "󰆧",
-    Function = "󰊕",
-    Constructor = "",
-    Field = "󰇽",
-    Variable = "󰂡",
-    Class = "󰠱",
-    Interface = "",
-    Module = "",
-    Property = "󰜢",
-    Unit = "",
-    Value = "󰎠",
-    Enum = "",
-    Keyword = "󰌋",
-    Snippet = "",
-    Color = "󰏘",
-    File = "󰈙",
-    Reference = "",
-    Folder = "󰉋",
-    EnumMember = "",
-    Constant = "󰏿",
-    Struct = "",
-    Event = "",
-    Operator = "󰆕",
-    TypeParameter = "󰅲",
-  },
-}
-
 local lsp_zero = require("lsp-zero")
 
 lsp_zero.on_attach(function(_, bufnr)
@@ -85,7 +49,7 @@ lsp_zero.on_attach(function(_, bufnr)
   })
 end)
 
-lsp_zero.set_sign_icons(icons.diagnostic)
+lsp_zero.set_sign_icons(require("luffy.utils").icons.diagnostic)
 
 local servers = {
   "lua_ls",
@@ -176,9 +140,10 @@ cmp.setup({
   },
   formatting = {
     format = function(entry, vim_item)
+      local icons = require("luffy.utils").icons.kind
       -- Kind icons
       vim_item.kind =
-        string.format("%s %s", icons.kind[vim_item.kind], vim_item.kind)
+        string.format("%s %s", icons[vim_item.kind], vim_item.kind)
       -- Source
       vim_item.menu = ({
         nvim_lsp = "[LSP]",
