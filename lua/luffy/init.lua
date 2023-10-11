@@ -1,12 +1,7 @@
 local M = {}
 
 local default_options = {
-  colorscheme = function()
-    vim.cmd.colorscheme("catppuccin")
-    local mocha = require("catppuccin.palettes").get_palette("mocha")
-    vim.cmd("highlight ColorColumn guibg=" .. mocha.red)
-    vim.cmd("highlight LineNr guifg=" .. mocha.yellow)
-  end,
+  colorscheme = "catppuccin",
   modules = {
     "options",
     "keymaps",
@@ -16,7 +11,7 @@ local default_options = {
   },
 }
 
-M.options = { }
+M.options = {}
 
 local function set_colorscheme(colorscheme)
   if type(colorscheme) == "function" then
