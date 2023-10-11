@@ -15,4 +15,17 @@ return {
     },
   },
   { "ellisonleao/gruvbox.nvim", priority = 1000, lazy = true },
+  {
+    "folke/tokyonight.nvim",
+    lazy = true,
+    priority = 1000,
+    config = function()
+      require("tokyonight").setup({
+        on_highlights = function(hl, c)
+          hl.LineNr = { fg = c.yellow }
+          hl.ColorColumn = { bg = c.red }
+        end,
+      })
+    end,
+  },
 }
