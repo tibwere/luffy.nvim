@@ -1,13 +1,17 @@
-local lsp_zero = require("lsp-zero")
+--[[
+██╗     ███████╗██████╗
+██║     ██╔════╝██╔══██╗
+██║     ███████╗██████╔╝
+██║     ╚════██║██╔═══╝
+███████╗███████║██║
+╚══════╝╚══════╝╚═╝
+--]]
 
-lsp_zero.on_attach(function(client, bufnr)
-  if client.server_capabilities.documentSymbolProvider then
-    require("nvim-navic").attach(client, bufnr)
-  end
-
+-- devel_mappings provides some good default keybinds
+-- @param bufnr: the buffer id
+local function devel_mappings(bufnr)
   local function map(mode, lhs, rhs, opts)
-    local bufopt = { buffer = bufnr }
-    local options = vim.tbl_deep_extend("force", bufopt, opts or {})
+    local options = vim.tbl_deep_extend("force", { buffer = bufnr }, opts or {})
     vim.keymap.set(mode, lhs, rhs, options)
   end
 
@@ -35,36 +39,43 @@ lsp_zero.on_attach(function(client, bufnr)
   map("n", "<F4>", vim.lsp.buf.code_action, { desc = "Select an action" })
   map("n", "]d", vim.diagnostic.goto_next, { desc = "Goto next diagnostic" })
   map("n", "[d", vim.diagnostic.goto_prev, { desc = "Goto next diagnostic" })
+end
 
+local lsp_zero = require("lsp-zero")
+
+lsp_zero.on_attach(function(client, bufnr)
+  -- outline symbols (like VSCode or IntellJIDEA
+  if client.server_capabilities.documentSymbolProvider then
+    require("nvim-navic").attach(client, bufnr)
+  end
+
+  -- setup my custom keymaps (with descriptions useful for which-key)
+  devel_mappings(bufnr)
+
+  -- show me the diagnostic of the current line on hover
   vim.api.nvim_create_autocmd("CursorHold", {
     buffer = bufnr,
     desc = "LSP show diagnostic on CursorHold",
     callback = function()
-      local hover_opts = {
+      vim.diagnostic.open_float(nil, {
         focusable = false,
         close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
         border = "rounded",
         source = "always",
         prefix = " ",
-      }
-
-      vim.diagnostic.open_float(nil, hover_opts)
+      })
     end,
   })
 end)
 
+-- diagnostic are better with icons
 lsp_zero.set_sign_icons(require("luffy.utils").icons.diagnostic)
 
-local servers = {
-  "lua_ls",
-  "bashls",
-  "clangd",
-  "pyright",
-  "gopls",
-}
-
+-- LSP server configurations (via Mason).
+-- Note that the LSP-zero defaults are used but for some server (like lua_ls)
+-- tey needs some customization.
 require("mason-lspconfig").setup({
-  ensure_installed = servers,
+  ensure_installed = require("luffy").options.must_have_servers,
   handlers = {
     lsp_zero.default_setup,
     lua_ls = function()
@@ -77,6 +88,8 @@ require("mason-lspconfig").setup({
   },
 })
 
+-- Neovim diagnostic builtin customization
+-- (I prefer float instead of virtual text)
 vim.diagnostic.config({
   virtual_text = false,
   signs = true,
@@ -84,6 +97,16 @@ vim.diagnostic.config({
   update_in_insert = false,
   severity_sort = true,
 })
+
+
+--[[
+ ██████╗███╗   ███╗██████╗
+██╔════╝████╗ ████║██╔══██╗
+██║     ██╔████╔██║██████╔╝
+██║     ██║╚██╔╝██║██╔═══╝
+╚██████╗██║ ╚═╝ ██║██║
+ ╚═════╝╚═╝     ╚═╝╚═╝
+--]]
 
 local cmp = require("cmp")
 local cmp_action = require("lsp-zero").cmp_action()
@@ -102,6 +125,7 @@ cmp.setup({
     { name = "nvim_lsp" },
     { name = "nvim_lua" },
     { name = "luasnip" },
+  }, {
     {
       name = "buffer",
       -- complete from all opened buffers

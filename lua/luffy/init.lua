@@ -9,6 +9,13 @@ local default_options = {
     "plugins",
     "devel",
   },
+  must_have_servers = {
+    "lua_ls",
+    "bashls",
+    "clangd",
+    "pyright",
+    "gopls",
+  },
 }
 
 M.options = {}
