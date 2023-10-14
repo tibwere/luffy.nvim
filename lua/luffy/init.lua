@@ -9,12 +9,22 @@ local default_options = {
     "plugins",
     "devel",
   },
-  must_have_servers = {
-    "lua_ls",
-    "bashls",
-    "clangd",
-    "pyright",
-    "gopls",
+  must_have = {
+    servers = {
+      "lua_ls",
+      "bashls",
+      "clangd",
+      "pyright",
+      "gopls",
+    },
+    parsers = {
+      "c",
+      "lua",
+      "bash",
+      "vimdoc",
+      "go",
+      "make",
+    },
   },
 }
 

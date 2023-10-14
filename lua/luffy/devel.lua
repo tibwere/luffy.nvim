@@ -75,7 +75,7 @@ lsp_zero.set_sign_icons(require("luffy.utils").icons.diagnostic)
 -- Note that the LSP-zero defaults are used but for some server (like lua_ls)
 -- tey needs some customization.
 require("mason-lspconfig").setup({
-  ensure_installed = require("luffy").options.must_have_servers,
+  ensure_installed = require("luffy").options.must_have.servers,
   handlers = {
     lsp_zero.default_setup,
     lua_ls = function()

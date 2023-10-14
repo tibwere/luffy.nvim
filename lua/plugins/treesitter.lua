@@ -2,7 +2,7 @@ return {
   "nvim-treesitter/nvim-treesitter",
   build = ":TSUpdate",
   opts = {
-    ensure_installed = { "c", "lua", "bash", "vimdoc", "go", "make" },
+    ensure_installed = require("luffy").options.must_have.parsers,
     sync_install = false,
     auto_install = false,
     ignore_install = {},
