@@ -27,6 +27,21 @@ local options = {
   timeoutlen = 300,
 }
 
+local special_chars = {
+  eol = "¬",
+  tab = "‣ ",
+  trail = "•",
+  -- extends = "»",
+  -- nbsp = "⦸",
+  -- precedes = "«",
+  -- space = "␣",
+}
+
 for k, v in pairs(options) do
   vim.opt[k] = v
+end
+
+vim.opt.list = true
+for k, v in pairs(special_chars) do
+  vim.opt.listchars:append(k .. ":" .. v)
 end
