@@ -14,6 +14,7 @@
   "cscope_maps.nvim": { "branch": "main", "commit": "ebb4d5cd705511593fbea08c82030c90cc905c32" },
   "gitsigns.nvim": { "branch": "main", "commit": "ff01d34daaed72f271a8ffa088a7e839a60c640f" },
   "gruvbox.nvim": { "branch": "main", "commit": "477c62493c82684ed510c4f70eaf83802e398898" },
+  "indent-blankline.nvim": { "branch": "master", "commit": "0fe34b4c1b926e106d105d3ae88ef6cbf6743572" },
   "lazy.nvim": { "branch": "main", "commit": "906ff8e569872d9081cfc9246d917011c22b5e61" },
   "lsp-zero.nvim": { "branch": "v3.x", "commit": "96f29a47fe48254cb3a826f6d7e90a108dae502d" },
   "lualine.nvim": { "branch": "master", "commit": "45e27ca739c7be6c49e5496d14fcf45a303c3a63" },

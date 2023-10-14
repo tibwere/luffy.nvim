@@ -10,6 +10,13 @@ return {
         return {
           LineNr = { fg = colors.yellow },
           ColorColumn = { bg = colors.red },
+          RainbowRed = { fg = colors.red },
+          RainbowYellow = { fg = colors.yellow },
+          RainbowBlue = { fg = colors.blue },
+          RainbowOrange = { fg = colors.peach },
+          RainbowGreen = { fg = colors.green },
+          RainbowViolet = { fg = colors.mauve },
+          RainbowCyan = { fg = colors.sky },
         }
       end,
     },
@@ -24,6 +31,13 @@ return {
         on_highlights = function(hl, c)
           hl.LineNr = { fg = c.yellow }
           hl.ColorColumn = { bg = c.red }
+          hl.RainbowRed = { fg = c.red }
+          hl.RainbowYellow = { fg = c.yellow }
+          hl.RainbowBlue = { fg = c.blue }
+          hl.RainbowOrange = { fg = c.orange }
+          hl.RainbowGreen = { fg = c.green }
+          hl.RainbowViolet = { fg = c.purple }
+          hl.RainbowCyan = { fg = c.cyan }
         end,
       })
     end,
