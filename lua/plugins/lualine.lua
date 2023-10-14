@@ -1,16 +1,9 @@
--- helper function that is used to choose
--- if show component on the lualine or not
-local conditional_hide = function()
-  return vim.fn.winwidth(0) > 120
-end
-
 -- custom diff component
 -- (fancy icons are added)
 local diff = {
   "diff",
   colored = true,
   symbols = { added = " ", modified = " ", removed = " " },
-  cond = conditional_hide,
 }
 
 -- custom diagnostic component
@@ -19,7 +12,6 @@ local diagnostics = {
   "diagnostics",
   update_in_insert = true,
   always_visible = true,
-  cond = conditional_hide,
 }
 
 -- helper function used to format a component
@@ -64,7 +56,7 @@ local navic = {
     return require("nvim-navic").get_location()
   end,
   cond = function()
-    return conditional_hide() and require("nvim-navic").is_available()
+    return require("nvim-navic").is_available()
   end,
 }
 
