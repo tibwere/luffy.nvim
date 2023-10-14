@@ -2,10 +2,10 @@ local M = {}
 
 M.icons = {
   diagnostic = {
-    error = "✘",
-    warn = "▲",
-    hint = "⚑",
-    info = "»",
+    error = "",
+    warn = "",
+    hint = "",
+    info = "",
   },
   kind = {
     Text = "",
