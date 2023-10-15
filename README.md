@@ -61,3 +61,6 @@ An **extended** configuration of Neovim.
   * [mason.nvim](https://github.com/williamboman/mason.nvim): package manager for LSP/DAP servers, formatters and linters
   * [neodev.nvim](https://github.com/folke/neodev.nvim): helper for init.lua and plugin development/configuration
   * [null-ls.nvim](https://github.com/jose-elias-alvarez/null-ls.nvim): support for diagnostics, formatting and linting
+
+### Plugin Manager
+Obviously [lazy.nvim](https://github.com/folke/lazy.nvim)
