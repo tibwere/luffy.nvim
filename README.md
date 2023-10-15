@@ -36,3 +36,28 @@ An **extended** configuration of Neovim.
   * [catppuccin](https://github.com/catppuccin/nvim)
   * [gruvbox.nvim](https://github.com/ellisonleao/gruvbox.nvim)
   * [tokyonight.nvim](https://github.com/folke/tokyonight.nvim)
+
+### Development
+#### Language Server Protocol
+
+  * [lsp-zero.nvim](https://github.com/VonHeikemen/lsp-zero.nvim): helper for LSP setup
+  * [mason-lspconfig.nvim](https://github.com/williamboman/mason-lspconfig.nvim): bridge between `mason` and `nvim-lspconfig`
+  * [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig): LSP configuration
+  * [nvim-navic](https://github.com/SmiteshP/nvim-navic): status line that shows the current context (IDE-like)
+
+#### Completion
+
+  * [nvim-cmp](https://github.com/hrsh7th/nvim-cmp): completion engine
+    - [cmp-buffer](ihttps://github.com/hrsh7th/cmp-buffer): buffer source for completion
+    - [cmp-cmdline](https://github.com/hrsh7th/cmp-cmdline): command line source for completion
+    - [cmp-nvim-lsp](https://github.com/hrsh7th/cmp-nvim-lsp): bridge between LSP and completion *worlds*
+    - [cmp-nvim-lua](https://github.com/hrsh7th/cmp-nvim-lua): Neovim Lua source for completion
+    - [cmp-path](https://github.com/hrsh7th/cmp-nvim-lua): filesystem's path source for completion
+  * [LuaSnip](https://github.com/L3MON4D3/LuaSnip): snippet collection
+    - [cmp_luasnip](https://github.com/saadparwaiz1/cmp_luasnip): bridge between `cmp` and `LuaSnip`
+
+#### Other
+
+  * [mason.nvim](https://github.com/williamboman/mason.nvim): package manager for LSP/DAP servers, formatters and linters
+  * [neodev.nvim](https://github.com/folke/neodev.nvim): helper for init.lua and plugin development/configuration
+  * [null-ls.nvim](https://github.com/jose-elias-alvarez/null-ls.nvim): support for diagnostics, formatting and linting
