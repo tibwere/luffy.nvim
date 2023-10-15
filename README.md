@@ -30,3 +30,9 @@ An **extended** configuration of Neovim.
   * [nvim-colorizer.lua](https://github.com/norcalli/nvim-colorizer.lua): color highlighter
   * [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter): *easy-to-use* interface for `tree-sitter`
   * [plenary.nvim](https://github.com/nvim-lua/plenary.nvim): needed by a lot of other plugin as dependency
+
+### Colorscheme
+
+  * [catppuccin](https://github.com/catppuccin/nvim)
+  * [gruvbox.nvim](https://github.com/ellisonleao/gruvbox.nvim)
+  * [tokyonight.nvim](https://github.com/folke/tokyonight.nvim)
