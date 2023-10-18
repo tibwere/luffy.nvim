@@ -30,7 +30,14 @@ return {
     }
     local hooks = require("ibl.hooks")
     hooks.register(hooks.type.HIGHLIGHT_SETUP, rainbow_hl)
+    hooks.register(
+      hooks.type.SCOPE_HIGHLIGHT,
+      hooks.builtin.scope_highlight_from_extmark
+    )
 
-    require("ibl").setup { indent = { highlight = hl } }
+    require("ibl").setup({
+      indent = {char = "│", tab_char = "│" },
+      scope = { highlight = hl }
+    })
   end,
 }
