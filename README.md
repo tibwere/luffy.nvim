@@ -7,7 +7,7 @@ An **extended** configuration of Neovim.
 ### UI
 
   * [alpha-nvim](https://github.com/goolord/alpha-nvim): greeter
-  * [bufferline.nvim](https://github.com/akinsho/bufferline.nvim): bufferr line (IDE-like)
+  * [bufferline.nvim](https://github.com/akinsho/bufferline.nvim): buffer line (IDE-like)
   * [indent-blankline.nvim](https://github.com/lukas-reineke/indent-blankline.nvim):  indentation guides
   * [lualine.nvim](https://github.com/nvim-lualine/lualine.nvim): status line
   * [nvim-notify](https://github.com/rcarriga/nvim-notify): notification manager
@@ -26,7 +26,7 @@ An **extended** configuration of Neovim.
   * [bufdelete.nvim](https://github.com/famiu/bufdelete.nvim): better buffer deletion management
   * [cscope\_maps.nvim](https://github.com/dhananjaylatkar/cscope_maps.nvim): `cscope` integration
   * [gitsigns.nvim](https://github.com/lewis6991/gitsigns.nvim): git integration
-  * [mini.surround](https://github.com/echasnovski/mini.surround): Mini's surrounder helper
+  * [mini.surround](https://github.com/echasnovski/mini.surround): Mini's surround helper
   * [nvim-colorizer.lua](https://github.com/norcalli/nvim-colorizer.lua): color highlighter
   * [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter): *easy-to-use* interface for `tree-sitter`
   * [plenary.nvim](https://github.com/nvim-lua/plenary.nvim): needed by a lot of other plugin as dependency
