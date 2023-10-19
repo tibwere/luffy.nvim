@@ -14,7 +14,7 @@ local default_options = {
       "lua_ls",
       "bashls",
       "clangd",
-      "pyright",
+      "pylsp",
       "gopls",
     },
     parsers = {
