@@ -9,13 +9,7 @@ return {
     cmd = "Mason",
     build = ":MasonUpdate",
     keys = { { "<leader>m", "<cmd>Mason<cr>", desc = "Mason" } },
-    opts = {
-      ensure_installed = {
-        "stylua",
-        "shfmt",
-        "flake8",
-      },
-    },
+    opts = { },
   },
   { "williamboman/mason-lspconfig.nvim" },
 

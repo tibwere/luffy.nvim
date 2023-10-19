@@ -98,7 +98,6 @@ vim.diagnostic.config({
   severity_sort = true,
 })
 
-
 --[[
  ██████╗███╗   ███╗██████╗
 ██╔════╝████╗ ████║██╔══██╗
@@ -207,6 +206,48 @@ cmp.setup.cmdline(":", {
     },
   }),
 })
+
+--[[
+███╗   ██╗██╗   ██╗██╗     ██╗      ██╗     ███████╗
+████╗  ██║██║   ██║██║     ██║      ██║     ██╔════╝
+██╔██╗ ██║██║   ██║██║     ██║█████╗██║     ███████╗
+██║╚██╗██║██║   ██║██║     ██║╚════╝██║     ╚════██║
+██║ ╚████║╚██████╔╝███████╗███████╗ ███████╗███████║
+╚═╝  ╚═══╝ ╚═════╝ ╚══════╝╚══════╝ ╚══════╝╚══════╝
+--]]
+
+-- a "minimalistic" mason-lspconfig for linters/formatters/DAP servers.
+-- [ thanks to @LazyVim developers ]
+local function ensure_installed()
+  local mason_registry = require("mason-registry")
+  local tools = require("luffy").options.must_have.formatters
+  for _, tool in ipairs(tools) do
+    -- retrieve the package if exists, otherwise an error is raised
+    local p = mason_registry.get_package(tool)
+
+    -- : is used instead of . for call becuase self must be passed
+    if not p:is_installed() then
+      -- "pre" notification
+      require("luffy.utils").emit_notify(
+        "luffy.nvim",
+        "[luffy.nvim] installing " .. p.name
+      )
+      p:install()
+
+      -- "post" notification
+      require("luffy.utils").emit_notify(
+        "luffy.nvim",
+        "[luffy.nvim] " .. p.name .. " was successfully installed"
+      )
+    end
+  end
+end
+
+if require("mason-registry").refresh then
+  require("mason-registry").refresh(ensure_installed)
+else
+  ensure_installed()
+end
 
 local null_ls = require("null-ls")
 

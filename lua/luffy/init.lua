@@ -25,6 +25,10 @@ local default_options = {
       "go",
       "make",
     },
+    formatters = {
+      "stylua",
+      "shfmt",
+    },
   },
 }
 
