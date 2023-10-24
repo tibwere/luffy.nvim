@@ -24,6 +24,7 @@ local default_options = {
       "vimdoc",
       "go",
       "make",
+      "python",
     },
     formatters = {
       "stylua",
