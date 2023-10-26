@@ -25,6 +25,8 @@ local default_options = {
       "go",
       "make",
       "python",
+      "git_rebase",
+      "gitcommit",
     },
     formatters = {
       "stylua",
