@@ -1,6 +1,5 @@
 return {
   "luukvbaal/statuscol.nvim",
-  dependencies = { "kevinhwang91/nvim-ufo" },
   config = function()
     local builtin = require("statuscol.builtin")
     require("statuscol").setup({

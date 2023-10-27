@@ -34,6 +34,7 @@ return {
     "kevinhwang91/promise-async",
     "nvim-treesitter/nvim-treesitter",
   },
+  event = "VeryLazy",
   opts = {
     -- Treesitter as a main provider.
     -- Only depend on `nvim-treesitter/queries/filetype/folds.scm`,

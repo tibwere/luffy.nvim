@@ -1,6 +1,7 @@
 return {
   "nvim-treesitter/nvim-treesitter",
   build = ":TSUpdate",
+  event = "VeryLazy",
   opts = {
     ensure_installed = require("luffy").options.must_have.parsers,
     sync_install = false,
