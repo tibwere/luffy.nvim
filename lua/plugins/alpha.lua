@@ -50,11 +50,8 @@ return {
         local fallback_on_empty = fallback_name == "" and fallback_ft == ""
 
         if fallback_on_empty then
-          local ok, _ = pcall(require, "neo-tree")
-          if not ok then
-            require("alpha").start()
-            vim.api.nvim_buf_delete(event.buf, { force = true })
-          end
+          require("alpha").start()
+          vim.api.nvim_buf_delete(event.buf, { force = true })
         end
       end,
     })
