@@ -1,4 +1,4 @@
 return {
   "norcalli/nvim-colorizer.lua",
-  opts = { "*", default_options = { names = false } },
+  opts = { nil, default_options = { names = false } },
 }
