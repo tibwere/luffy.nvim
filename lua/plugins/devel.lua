@@ -26,7 +26,7 @@ return {
   -- Formatting and linting
   {
     "jose-elias-alvarez/null-ls.nvim",
-    dependencies = { "nvim-lua/plenary.nvim" },
+    dependencies = { "nvim-lua/plenary.nvim", "davidmh/cspell.nvim" },
   },
 
   { "folke/neodev.nvim", opts = {} },
