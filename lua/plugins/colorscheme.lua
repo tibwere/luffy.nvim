@@ -10,6 +10,7 @@ return {
         return {
           LineNr = { fg = colors.yellow },
           ColorColumn = { bg = colors.red },
+          WinSeparator = { bg = colors.green },
           RainbowRed = { fg = colors.red },
           RainbowYellow = { fg = colors.yellow },
           RainbowBlue = { fg = colors.blue },
@@ -31,6 +32,7 @@ return {
         on_highlights = function(hl, c)
           hl.LineNr = { fg = c.yellow }
           hl.ColorColumn = { bg = c.red }
+          hl.WinSeparator = { bg = c.green }
           hl.RainbowRed = { fg = c.red }
           hl.RainbowYellow = { fg = c.yellow }
           hl.RainbowBlue = { fg = c.blue }
