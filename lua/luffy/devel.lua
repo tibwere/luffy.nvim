@@ -51,25 +51,11 @@ lsp_zero.on_attach(function(client, bufnr)
 
   -- setup my custom keymaps (with descriptions useful for which-key)
   devel_mappings(bufnr)
-
-  -- show me the diagnostic of the current line on hover
-  vim.api.nvim_create_autocmd("CursorHold", {
-    buffer = bufnr,
-    desc = "LSP show diagnostic on CursorHold",
-    callback = function()
-      vim.diagnostic.open_float(nil, {
-        focusable = false,
-        close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
-        border = "rounded",
-        source = "always",
-        prefix = " ",
-      })
-    end,
-  })
 end)
 
 -- diagnostic are better with icons
-lsp_zero.set_sign_icons(require("luffy.utils").icons.diagnostic)
+local icons = require("luffy.utils").icons
+lsp_zero.set_sign_icons(icons.diagnostic)
 
 -- LSP server configurations (via Mason).
 -- Note that the LSP-zero defaults are used but for some server (like lua_ls)
@@ -86,16 +72,6 @@ require("mason-lspconfig").setup({
       require("lspconfig").lua_ls.setup(lua_opts)
     end,
   },
-})
-
--- Neovim diagnostic builtin customization
--- (I prefer float instead of virtual text)
-vim.diagnostic.config({
-  virtual_text = false,
-  signs = true,
-  underline = true,
-  update_in_insert = false,
-  severity_sort = true,
 })
 
 --[[
@@ -167,10 +143,9 @@ cmp.setup({
   },
   formatting = {
     format = function(entry, vim_item)
-      local icons = require("luffy.utils").icons.kind
       -- Kind icons
       vim_item.kind =
-        string.format("%s %s", icons[vim_item.kind], vim_item.kind)
+        string.format("%s %s", icons.kind[vim_item.kind], vim_item.kind)
       -- Source
       vim_item.menu = ({
         nvim_lsp = "[LSP]",
@@ -256,7 +231,7 @@ null_ls.setup({
   sources = {
     null_ls.builtins.formatting.stylua,
     null_ls.builtins.formatting.shfmt,
-    cspell.diagnostics.with({ filetypes = { "text" }}),
-    cspell.code_actions.with({ filetypes = { "text" }}),
+    cspell.diagnostics.with({ filetypes = { "text" } }),
+    cspell.code_actions.with({ filetypes = { "text" } }),
   },
 })
