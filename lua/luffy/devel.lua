@@ -51,6 +51,10 @@ lsp_zero.on_attach(function(client, bufnr)
 
   -- setup my custom keymaps (with descriptions useful for which-key)
   devel_mappings(bufnr)
+
+  if vim.lsp.inlay_hint then
+    vim.lsp.inlay_hint.enable(true, { bufnr })
+  end
 end)
 
 -- diagnostic are better with icons
@@ -68,6 +72,7 @@ require("mason-lspconfig").setup({
       local lua_opts = lsp_zero.nvim_lua_ls({
         format = { enable = false },
         telemetry = { enable = false },
+        hint = { enable = true },
       })
       require("lspconfig").lua_ls.setup(lua_opts)
     end,
