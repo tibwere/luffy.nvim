@@ -236,7 +236,12 @@ null_ls.setup({
   sources = {
     null_ls.builtins.formatting.stylua,
     null_ls.builtins.formatting.shfmt,
-    cspell.diagnostics.with({ filetypes = { "text" } }),
-    cspell.code_actions.with({ filetypes = { "text" } }),
+    cspell.diagnostics.with({
+      filetypes = { "text", "markdown" },
+      diagnostics_postprocess = function(diagnostic)
+        diagnostic.severity = vim.diagnostic.severity["HINT"]
+      end,
+    }),
+    cspell.code_actions.with({ filetypes = { "text", "markdown" } }),
   },
 })
