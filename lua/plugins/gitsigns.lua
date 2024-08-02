@@ -62,9 +62,7 @@ return {
 
       local ok, wk = pcall(require, "which-key")
       if ok then
-        wk.register({
-          ["<leader>h"] = { name = "+git" },
-        }, { buffer = bufnr })
+        wk.add({ "<leader>h", group = "git", buffer = bufnr })
       end
     end,
   },

@@ -5,14 +5,11 @@ return {
     vim.o.timeout = true
     vim.o.timeoutlen = 300
   end,
-  config = function()
-    local wk = require("which-key")
-    wk.register({
-      ["<leader>f"] = { name = "+telescope" },
-      ["<leader>r"] = { name = "+remove" },
-      ["<leader>t"] = { name = "+toggle" },
-      ["<leader>u"] = { name = "+update" },
-      ["<leader>b"] = { name = "+buffer" },
-    })
-  end,
+  keys = {
+    { "<leader>f", group = "telescope" },
+    { "<leader>r", group = "remove" },
+    { "<leader>t", group = "toggle" },
+    { "<leader>u", group = "update" },
+    { "<leader>b", group = "buffer" },
+  },
 }
