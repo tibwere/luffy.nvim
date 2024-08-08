@@ -45,3 +45,6 @@ vim.opt.list = true
 for k, v in pairs(special_chars) do
   vim.opt.listchars:append(k .. ":" .. v)
 end
+
+-- emph trailing white space by coloring them
+vim.fn.matchadd("ExtraWhitespace", [[\s\+$]])

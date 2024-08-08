@@ -9,6 +9,7 @@ return {
       custom_highlights = function(colors)
         return {
           LineNr = { fg = colors.yellow },
+          ExtraWhitespace = { fg = colors.red },
           ColorColumn = { bg = colors.red },
           WinSeparator = { bg = colors.green },
           RainbowRed = { fg = colors.red },
@@ -31,6 +32,7 @@ return {
       require("tokyonight").setup({
         on_highlights = function(hl, c)
           hl.LineNr = { fg = c.yellow }
+          hl.ExtraWhitespace = { fg = c.yellow }
           hl.ColorColumn = { bg = c.red }
           hl.WinSeparator = { bg = c.green }
           hl.RainbowRed = { fg = c.red }
