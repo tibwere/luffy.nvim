@@ -51,6 +51,16 @@ map("n", "<leader>tn", function()
   toggle_option("relativenumber", true, false, "Relative line numbers")
 end, { desc = "Toggle relative/absolute line numbers" })
 
+map("n", "<leader>ts", function()
+  local utils = require("luffy.utils")
+
+  if vim.opt.listchars:get()["space"] then
+    vim.opt.listchars:remove("space")
+  else
+    vim.opt.listchars:append("space:" .. utils.special_chars.space)
+  end
+end, { desc = "Toggle visible spaces" })
+
 -- run makeprg
 map("n", "<F5>", function()
   vim.cmd([[silent make]])

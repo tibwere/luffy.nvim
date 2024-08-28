@@ -36,6 +36,16 @@ M.icons = {
   },
 }
 
+M.special_chars = {
+  tab = "‣ ",
+  trail = "•",
+  eol = "¬",
+  extends = "»",
+  nbsp = "⦸",
+  precedes = "«",
+  space = "␣",
+}
+
 function M.emit_notify(title, body, level, timeout)
   level = level or vim.log.levels.INFO
   timeout = timeout or 1000

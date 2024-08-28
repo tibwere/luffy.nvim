@@ -27,24 +27,14 @@ local options = {
   timeoutlen = 300,
 }
 
-local special_chars = {
-  eol = "¬",
-  tab = "‣ ",
-  trail = "•",
-  -- extends = "»",
-  -- nbsp = "⦸",
-  -- precedes = "«",
-  -- space = "␣",
-}
-
 for k, v in pairs(options) do
   vim.opt[k] = v
 end
 
 vim.opt.list = true
-for k, v in pairs(special_chars) do
-  vim.opt.listchars:append(k .. ":" .. v)
-end
-
--- emph trailing white space by coloring them
+local special_chars = require('luffy.utils').special_chars
+vim.opt.listchars:append('tab:' .. special_chars['tab'])
+vim.opt.listchars:append('trail:' .. special_chars['trail'])
+--
+-- emph trailing whitespaces by coloring them
 vim.fn.matchadd("ExtraWhitespace", [[\s\+$]])
