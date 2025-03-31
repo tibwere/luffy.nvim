@@ -13,7 +13,7 @@ local diagnostics = {
   update_in_insert = true,
   always_visible = true,
   cond = function()
-    return #vim.lsp.get_active_clients() > 0
+    return #vim.lsp.get_clients() > 0
   end,
 }
 
