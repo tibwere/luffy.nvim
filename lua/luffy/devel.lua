@@ -41,7 +41,7 @@ local function devel_mappings(bufnr)
   map("n", "[d", vim.diagnostic.goto_prev, { desc = "Goto next diagnostic" })
   map("n", "<leader>ti", function()
     if vim.lsp.inlay_hint then
-      local curr = vim.lsp.inlay_hint.is_enabled({})
+      local curr = vim.lsp.inlay_hint.is_enabled({ bufnr })
       vim.lsp.inlay_hint.enable(not curr, { bufnr })
     end
   end, { desc = "Toggle inline hints" })
