@@ -65,5 +65,6 @@ return {
         wk.add({ "<leader>h", group = "git", buffer = bufnr })
       end
     end,
+    word_diff = true,
   },
 }
