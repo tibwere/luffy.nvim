@@ -49,7 +49,10 @@ return {
     ufo.setup(opts)
 
     -- Custom gliphs in the fold column
-    vim.o.foldcolumn = "1"
+    vim.o.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
+    -- Uncomment this line when foldinner will be supported
+    -- vim.o.foldcolumn = "1"
+
     -- Using ufo provider need a large value, feel free to decrease the value
     vim.o.foldlevel = 99
     vim.o.foldlevelstart = 99
