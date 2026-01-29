@@ -24,9 +24,6 @@ map("n", "N", "Nzzzv", { desc = "Jump previous" })
 map("x", "<leader>p", [["_dP]], { desc = "Paste over existing text" })
 map("x", "<leader>c", [["_d]], { desc = "Cut without store in registers" })
 
-map({ "n", "v" }, "<leader>y", [["+y]], { desc = "Yank (global clipboard)" })
-map({ "n", "v" }, "<leader>d", [["+d]], { desc = "Cut (global clipboard)" })
-
 -- Why should i want to switch to ex?
 map("n", "Q", "<nop>")
 
