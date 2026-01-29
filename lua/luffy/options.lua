@@ -42,9 +42,9 @@ for k, v in pairs(options) do
 end
 
 vim.opt.list = true
-local special_chars = require('luffy.utils').special_chars
-vim.opt.listchars:append('tab:' .. special_chars['tab'])
-vim.opt.listchars:append('trail:' .. special_chars['trail'])
+local special_chars = require("luffy.utils").special_chars
+vim.opt.listchars:append("tab:" .. special_chars["tab"])
+vim.opt.listchars:append("trail:" .. special_chars["trail"])
 --
 -- emph trailing whitespaces by coloring them
 vim.fn.matchadd("ExtraWhitespace", [[\s\+$]])
