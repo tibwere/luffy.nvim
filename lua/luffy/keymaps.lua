@@ -11,6 +11,7 @@ local map = vim.keymap.set
 
 -- set <Space> as leader
 vim.g.mapleader = " "
+vim.g.maplocaleader = " "
 
 map("i", "jk", "<ESC>", { desc = "Goto normal mode (quickly)" })
 map("i", "kj", "<ESC>", { desc = "Goto normal mode (quickly)" })
