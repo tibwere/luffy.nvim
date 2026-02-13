@@ -6,7 +6,7 @@ local autocmd = vim.api.nvim_create_autocmd
 
 autocmd({ "FileType" }, {
   group = "gomu-gomu-no",
-  pattern = { "text", "tex", "markdown", "plaintex" },
+  pattern = { "text", "tex", "markdown", "plaintex", "typst" },
   callback = function()
     vim.opt_local.textwidth = 80
     vim.opt_local.expandtab = true
