@@ -1,5 +1,6 @@
+local utils = require("luffy.utils")
+
 local function toggle_option(option, old, new, name)
-  local utils = require("luffy.utils")
   vim.opt[option] = utils.ternary(vim.opt[option]:get() == old, new, old)
   utils.emit_notify(
     "Toggle option",
@@ -50,8 +51,6 @@ map("n", "<leader>tn", function()
 end, { desc = "Toggle relative/absolute line numbers" })
 
 map("n", "<leader>ts", function()
-  local utils = require("luffy.utils")
-
   if vim.opt.listchars:get()["space"] then
     vim.opt.listchars:remove("space")
   else
@@ -62,11 +61,11 @@ end, { desc = "Toggle visible spaces" })
 -- run makeprg
 map("n", "<F5>", function()
   vim.cmd([[silent make]])
-  require("luffy.utils").emit_notify("Make", "'makeprg' has completed")
+  utils.emit_notify("Make", "'makeprg' has completed")
 end, { desc = "Run make" })
 
 -- update session
 map("n", "<leader>us", function()
   vim.cmd([[mks!]])
-  require("luffy.utils").emit_notify("Session manager", "Session.nvim updated")
+  utils.emit_notify("Session manager", "Session.nvim updated")
 end, { desc = "Update Session.vim" })
