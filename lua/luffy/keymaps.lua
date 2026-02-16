@@ -89,3 +89,12 @@ end)
 map({ "n", "v" }, "<down>", function()
   key_warn("j")
 end)
+
+vim.api.nvim_create_user_command("EnableArrows", function()
+  map({ "n", "v" }, "<left>", "<left>")
+  map({ "n", "v" }, "<right>", "<right>")
+  map({ "n", "v" }, "<up>", "<up>")
+  map({ "n", "v" }, "<down>", "<down>")
+
+  utils.emit_notify("Arrows mode", "Arrows are now enabled")
+end, { desc = "Work with arrows", nargs = 0 })
