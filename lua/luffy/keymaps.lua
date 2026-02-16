@@ -69,3 +69,23 @@ map("n", "<leader>us", function()
   vim.cmd([[mks!]])
   utils.emit_notify("Session manager", "Session.nvim updated")
 end, { desc = "Update Session.vim" })
+
+local function key_warn(key)
+  utils.emit_notify(
+    "Move error",
+    "arrows are disabled, please use " .. key .. " instead"
+  )
+end
+
+map({ "n", "v" }, "<left>", function()
+  key_warn("h")
+end)
+map({ "n", "v" }, "<right>", function()
+  key_warn("l")
+end)
+map({ "n", "v" }, "<up>", function()
+  key_warn("k")
+end)
+map({ "n", "v" }, "<down>", function()
+  key_warn("j")
+end)
