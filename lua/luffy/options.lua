@@ -36,13 +36,13 @@ local options = {
   -- instead raise a dialog asking if you wish to save the current file(s)
   -- See `:help 'confirm'`
   confirm = true,
+  list = true,
 }
 
 for k, v in pairs(options) do
   vim.opt[k] = v
 end
 
-vim.opt.list = true
 local special_chars = require("luffy.utils").special_chars
 vim.opt.listchars:append("tab:" .. special_chars["tab"])
 vim.opt.listchars:append("trail:" .. special_chars["trail"])
