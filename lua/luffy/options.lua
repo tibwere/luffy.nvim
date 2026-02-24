@@ -6,6 +6,7 @@ local options = {
   shiftwidth = 8,
   tabstop = 8,
   softtabstop = 8,
+  smartcase = true,
   smartindent = true,
   wrap = false,
   swapfile = true,
